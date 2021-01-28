@@ -21,7 +21,7 @@ export const Widget = styled.div`
         line-height: 1.5;
     }
 `
-Widget.Header = styled.header`
+export const WidgetHeader = styled.header`
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -33,7 +33,7 @@ Widget.Header = styled.header`
     }
 `;
 
-Widget.Content = styled.div`
+export const WidgetContent = styled.div`
     padding: 24px 32px 32px 32px;
     & > *:first-child {
         margin-top: 0;

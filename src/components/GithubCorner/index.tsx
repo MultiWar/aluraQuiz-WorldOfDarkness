@@ -1,6 +1,6 @@
 import { SVGWrapper, Wrapper } from "./styles";
 
-const GithubCorner = ({projectUrl}) => {
+const GithubCorner = ({projectUrl}: {projectUrl: string}) => {
     return (
         <Wrapper>
             <a href={projectUrl} target="_blank" rel="noreferrer">

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+const QuizContainer = styled.div`
     width: 100%;
     max-width: 350px;
     padding-top: 45px;
@@ -10,3 +10,5 @@ export const Container = styled.div`
         padding: 15px;
     }
 `
+
+export default QuizContainer
