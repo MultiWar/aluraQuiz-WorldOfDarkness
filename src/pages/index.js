@@ -13,12 +13,12 @@ export default function Home() {
   return (
     <MainDiv bgImage={db.bg}>
       <QuizContainer>
-        <h1>teste</h1>
+        <h1>Alura Quiz</h1>
         <Card title={db.title} desc={db.description} />
         <Card title='Quizes da Galera' desc='lorem ipsum dolor sit amet...' />
         <Footer />
       </QuizContainer>
-      <GithubCorner projectUrl={'https://github.com'}/>
+      <GithubCorner projectUrl={'https://github.com/MultiWar/aluraQuiz-WorldOfDarkness'}/>
     </MainDiv>
   )
 }
