@@ -9,8 +9,10 @@ import { useState, useEffect } from 'react'
 import ResultsWidget from 'src/components/ResultsWidget'
 import GithubCorner from 'src/components/GithubCorner'
 
+type ScreenStates = 'LOADING' | 'QUESTION' | 'RESULTS'
+
 const Quiz = () => {
-    const [screenState, setScreenState] = useState<'LOADING' | 'QUESTION' | 'RESULTS'>('LOADING')
+    const [screenState, setScreenState] = useState<ScreenStates>('LOADING')
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
     const [correctAnswers, setCorrectAnswers] = useState(0)
     const question = db.questions[currentQuestionIndex]
@@ -37,6 +39,7 @@ const Quiz = () => {
 
     function handleRestartQuiz() {
         setCurrentQuestionIndex(0)
+        setCorrectAnswers(0)
         setScreenState('QUESTION')
     }
 
