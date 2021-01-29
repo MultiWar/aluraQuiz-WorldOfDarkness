@@ -70,15 +70,15 @@ export const QuestionAlternative = styled.a.attrs(props => ({
     transition: .3s;
     display: block;
 
-    & .NOTSELECTED {
+    &[data-status="NOTSELECTED"] {
         opacity: .5;
     }
 
-    & .WRONG {
+    &[data-status="WRONG"] {
         background-color: ${({theme}) => theme.colors.wrong};
     }
 
-    & .CORRECT {
+    &[data-status="CORRECT"] {
         background-color: ${({theme}) => theme.colors.success};
     }
 

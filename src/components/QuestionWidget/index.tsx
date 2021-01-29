@@ -22,18 +22,18 @@ const QuestionWidget = ({questionIndex, numberOfQuestions, question, handleSubmi
     const questionId = `question__${questionIndex}`
     const [selectedAlternative, setSelectedAlternative] = useState<number>()
     const [isFormSubmitted, setIsFormSubmitted] = useState(false)
-    const [classes, setClasses] = useState<Record<number, string>>()
+    const [dataStatus, setDataStatus] = useState<Record<number, string>>()
     
     const indexes = [...question.alternatives.keys()]
 
     useEffect(() => {
         let isCleanup = false
         if(!isCleanup) {
-            const newClasses: Record<number, string> = {}
+            const newDataStatus: Record<number, string> = {}
             indexes.forEach(index => {
-                newClasses[index] = resolveClassName(index)
+                newDataStatus[index] = resolveClassName(index)
             })
-            setClasses(newClasses)
+            setDataStatus(newDataStatus)
         }
 
         return function cleanup() {
@@ -56,6 +56,15 @@ const QuestionWidget = ({questionIndex, numberOfQuestions, question, handleSubmi
         }
     }
 
+    function clearStates() {
+        setSelectedAlternative(undefined)
+        setDataStatus(undefined)
+        setIsFormSubmitted(false)
+    }
+
+    console.log('classes: ', dataStatus)
+    console.log('selected alternative: ', selectedAlternative)
+
     return (
         <Widget>
             <WidgetHeader>
@@ -77,15 +86,16 @@ const QuestionWidget = ({questionIndex, numberOfQuestions, question, handleSubmi
                         e.preventDefault()
                         setIsFormSubmitted(true)
                         setTimeout(() => {
+                            clearStates()
                             handleSubmit(selectedAlternative === question.answer)
-                        }, 2000)
+                        }, 1500)
                     }}
                 >
                     {question.alternatives.map((alternative, index) => {
                         const alternativeId = `alternative__${index}`
                         return (
-                            <QuestionAlternative key={alternativeId} as='label' htmlFor={alternativeId}>
-                                <input id={alternativeId} name={questionId} type='radio' value={index} onChange={() => setSelectedAlternative(index)} className={classes !== undefined ? classes[index] : ''} />
+                            <QuestionAlternative key={alternativeId} as='label' htmlFor={alternativeId} data-status={dataStatus !== undefined ? dataStatus[index] : ''}>
+                                <input id={alternativeId} name={questionId} type='radio' value={index} onChange={() => setSelectedAlternative(index)} />
                                 {alternative}
                             </QuestionAlternative>
                         )
