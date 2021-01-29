@@ -12,9 +12,9 @@ import GithubCorner from 'src/components/GithubCorner'
 const Quiz = () => {
     const [screenState, setScreenState] = useState<'LOADING' | 'QUESTION' | 'RESULTS'>('LOADING')
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+    const [correctAnswers, setCorrectAnswers] = useState(0)
     const question = db.questions[currentQuestionIndex]
 
-    // let correctAnswers = 0
     let widgetToBeRendered
 
     useEffect(() => {
@@ -22,9 +22,11 @@ const Quiz = () => {
             setScreenState('QUESTION')
         }, 2000);
     }, [])
-
-    function handleSubmit() {
-
+    
+    function handleSubmit(isCorrect: Boolean) {
+        if(isCorrect) {
+            setCorrectAnswers(prev => prev + 1)
+        }
         if(currentQuestionIndex === db.questions.length - 1) {
             setScreenState('RESULTS')
         }
@@ -38,15 +40,16 @@ const Quiz = () => {
         setScreenState('QUESTION')
     }
 
+
     switch(screenState) {
         case 'LOADING':
             widgetToBeRendered = <LoadingWidget />
             break;
         case 'QUESTION':
-            widgetToBeRendered = <QuestionWidget handleSubmit={handleSubmit} question={question} numberOfQuestions={db.questions.length} questionIndex={0} />
+            widgetToBeRendered = <QuestionWidget handleSubmit={handleSubmit} question={question} numberOfQuestions={db.questions.length} questionIndex={currentQuestionIndex} />
             break;
         case 'RESULTS':
-            widgetToBeRendered = <ResultsWidget correctAnswers={8} restart={handleRestartQuiz} />
+            widgetToBeRendered = <ResultsWidget correctAnswers={correctAnswers} restart={handleRestartQuiz} />
             break;
     }
 

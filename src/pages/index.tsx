@@ -25,7 +25,7 @@ export default function Home() {
         <QuizLogo className='teste'/>
         <h1>Alura Quiz</h1>
         <Widget>
-          <WidgetHeader>{db.title}</WidgetHeader>
+          <WidgetHeader><h1>{db.title}</h1></WidgetHeader>
           <WidgetContent>
             <form onSubmit={(e) => {
               e.preventDefault()

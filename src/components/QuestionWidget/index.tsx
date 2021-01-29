@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { useEffect, useState } from "react"
 import Button from "../Button"
 import { QuestionAlternative, Widget, WidgetContent, WidgetHeader } from "../Card"
 
@@ -12,12 +13,48 @@ interface QuestionWidgetProps {
     },
     questionIndex: number,
     numberOfQuestions: number,
-    handleSubmit: () => void
+    handleSubmit: (isCorrect: Boolean) => void,
 }
+
+type PossibleClasses = '' | 'CORRECT' | 'NOTSELECTED' | 'WRONG'
 
 const QuestionWidget = ({questionIndex, numberOfQuestions, question, handleSubmit}: QuestionWidgetProps) => {
     const questionId = `question__${questionIndex}`
-    // let selectedAlternative
+    const [selectedAlternative, setSelectedAlternative] = useState<number>()
+    const [isFormSubmitted, setIsFormSubmitted] = useState(false)
+    const [classes, setClasses] = useState<Record<number, string>>()
+    
+    const indexes = [...question.alternatives.keys()]
+
+    useEffect(() => {
+        let isCleanup = false
+        if(!isCleanup) {
+            const newClasses: Record<number, string> = {}
+            indexes.forEach(index => {
+                newClasses[index] = resolveClassName(index)
+            })
+            setClasses(newClasses)
+        }
+
+        return function cleanup() {
+            isCleanup = true
+        }
+    }, [isFormSubmitted])            
+
+    function resolveClassName(index: number): PossibleClasses {
+        if(!isFormSubmitted) {
+            return ''
+        }
+        if(index !== selectedAlternative && index !== question.answer) {
+            return 'NOTSELECTED'
+        }
+        if(index === question.answer) {
+            return 'CORRECT'
+        }
+        else {
+            return 'WRONG'
+        }
+    }
 
     return (
         <Widget>
@@ -38,19 +75,22 @@ const QuestionWidget = ({questionIndex, numberOfQuestions, question, handleSubmi
                 <form
                     onSubmit={(e) => {
                         e.preventDefault()
-                        handleSubmit()
+                        setIsFormSubmitted(true)
+                        setTimeout(() => {
+                            handleSubmit(selectedAlternative === question.answer)
+                        }, 2000)
                     }}
                 >
                     {question.alternatives.map((alternative, index) => {
                         const alternativeId = `alternative__${index}`
                         return (
                             <QuestionAlternative key={alternativeId} as='label' htmlFor={alternativeId}>
-                                <input id={alternativeId} name={questionId} type='radio' value={index} />
+                                <input id={alternativeId} name={questionId} type='radio' value={index} onChange={() => setSelectedAlternative(index)} className={classes !== undefined ? classes[index] : ''} />
                                 {alternative}
                             </QuestionAlternative>
                         )
                     })}
-                    <Button text='confirmar' type='submit' />
+                    <Button text='confirmar' type='submit' disabled={selectedAlternative === undefined} />
                 </form>
             </WidgetContent>
         </Widget>

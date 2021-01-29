@@ -29,6 +29,10 @@ export const WidgetHeader = styled.header`
     padding: 18px 32px;
     background-color: ${({ theme }) => theme.colors.primary};
 
+    h1 {
+        font-size: 20px;
+    }
+
     * {
         margin: 0;
     }
@@ -46,9 +50,15 @@ export const WidgetContent = styled.div`
         list-style: none;
         padding: 0;
     }
+    
+    h2 {
+        font-size: 18px;
+    }
 `
 
-export const QuestionAlternative = styled.a`
+export const QuestionAlternative = styled.a.attrs(props => ({
+    className: props.className
+}))`
     outline: 0;
     text-decoration: none;
     color: ${({ theme }) => theme.colors.contrastText};
@@ -59,6 +69,18 @@ export const QuestionAlternative = styled.a`
     border-radius: ${({ theme }) => theme.borderRadius};
     transition: .3s;
     display: block;
+
+    & .NOTSELECTED {
+        opacity: .5;
+    }
+
+    & .WRONG {
+        background-color: ${({theme}) => theme.colors.wrong};
+    }
+
+    & .CORRECT {
+        background-color: ${({theme}) => theme.colors.success};
+    }
 
     &:hover,
     &:focus {
