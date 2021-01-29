@@ -33,7 +33,7 @@ export default function Home() {
               router.push(`/quiz?name=${inputRef.current?.value}`)
             }}>
               <Input ref={inputRef} name='name' placeholder='Por favor, digite seu nome aqui' onChange={e => e.currentTarget.value === '' ? setIsNameEmpty(true) : setIsNameEmpty(false)} />
-              <Button type='submit' disabled={isNameEmpty} text='TESTE' />
+              <Button type='submit' disabled={isNameEmpty} text='jogar' />
             </form>
           </WidgetContent>
         </Widget>
