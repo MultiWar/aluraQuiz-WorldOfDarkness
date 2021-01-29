@@ -6,12 +6,15 @@ import GithubCorner from "../components/GithubCorner"
 import QuizLogo from "../components/QuizLogo"
 import Head from 'next/head'
 import { Widget, WidgetContent, WidgetHeader } from "src/components/Card"
-import { useState } from "react"
+import { useState, createRef } from "react"
 import {useRouter} from 'next/router'
+import Input from "src/components/Input"
+import Button from "src/components/Button"
 
 export default function Home() {
   const [isNameEmpty, setIsNameEmpty] = useState(true)
   const router = useRouter()
+  const inputRef = createRef<HTMLInputElement>()
 
   return (
     <MainDiv bgImage={db.bg}>
@@ -26,19 +29,19 @@ export default function Home() {
           <WidgetContent>
             <form onSubmit={(e) => {
               e.preventDefault()
-              alert('funciona')
-              router.push('/quiz')
+              console.log(inputRef)
+              router.push(`/quiz?name=${inputRef.current?.value}`)
             }}>
-              <input name='name' placeholder='Por favor, digite seu nome aqui' onChange={e => e.currentTarget.value === '' ? setIsNameEmpty(true) : setIsNameEmpty(false)} />
-              <button type='submit' disabled={isNameEmpty}>TESTE</button>
+              <Input ref={inputRef} name='name' placeholder='Por favor, digite seu nome aqui' onChange={e => e.currentTarget.value === '' ? setIsNameEmpty(true) : setIsNameEmpty(false)} />
+              <Button type='submit' disabled={isNameEmpty} text='TESTE' />
             </form>
           </WidgetContent>
         </Widget>
-        <Widget>
+        {/* <Widget>
           <WidgetHeader>
 
           </WidgetHeader>
-        </Widget>
+        </Widget> */}
         <Footer />
       </QuizContainer>
       <GithubCorner projectUrl={'https://github.com/MultiWar/aluraQuiz-WorldOfDarkness'}/>

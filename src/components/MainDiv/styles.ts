@@ -5,7 +5,7 @@ export const BackgroundImage = styled.div`
     width: 100%;
     background-size: cover;
     background-position: center;
-    background-image: url(${({backgroundImage}: {backgroundImage: string}) => backgroundImage});
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${({backgroundImage}: {backgroundImage: string}) => backgroundImage});
     background-color: ${({ theme }) => theme.colors.mainBg};
     flex: 1;
     @media screen and (max-width: 500px) {

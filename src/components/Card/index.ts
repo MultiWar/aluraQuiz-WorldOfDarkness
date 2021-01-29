@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Widget = styled.div`
     margin-top: 24px;
     margin-bottom: 24px;
+    max-width: 350px;
     border: 1px solid ${({ theme }) => theme.colors.primary};
     background-color: ${({ theme }) => {
         return theme.colors.mainBg;
@@ -44,5 +45,27 @@ export const WidgetContent = styled.div`
     ul {
         list-style: none;
         padding: 0;
+    }
+`
+
+export const QuestionAlternative = styled.a`
+    outline: 0;
+    text-decoration: none;
+    color: ${({ theme }) => theme.colors.contrastText};
+    background-color: ${({ theme }) => `${theme.colors.primary}50`};
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    border-radius: ${({ theme }) => theme.borderRadius};
+    transition: .3s;
+    display: block;
+
+    &:hover,
+    &:focus {
+        opacity: .5;
+    }
+
+    & input {
+        display: none;
     }
 `
