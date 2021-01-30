@@ -8,6 +8,7 @@ import QuizLogo from "src/components/QuizLogo"
 import LoadingWidget from 'src/components/LoadingWidget'
 import QuestionWidget from 'src/components/QuestionWidget'
 import ResultsWidget from 'src/components/ResultsWidget'
+import { ThemeProvider } from 'styled-components'
 
 type ScreenStates = 'LOADING' | 'QUESTION' | 'RESULTS'
 
@@ -59,16 +60,18 @@ const ExternalQuiz = ({dbExterno, id}: any) => {
     }
 
     return (
-        <MainDiv bgImage={dbExterno.bg}>
-            <Head>
-                <title>Perguntas</title>
-            </Head>
-            <QuizContainer>
-                <QuizLogo className='' />
-                {widgetToBeRendered}
-            </QuizContainer>
-            {id.includes('___') && <GithubCorner projectUrl={`https://github.com/${id.split('___')[1]}/${id.split('___')[0]}`}/>}
-        </MainDiv>
+        <ThemeProvider theme={dbExterno.theme}>
+            <MainDiv bgImage={dbExterno.bg}>
+                <Head>
+                    <title>Perguntas</title>
+                </Head>
+                <QuizContainer>
+                    <QuizLogo className='' />
+                    {widgetToBeRendered}
+                </QuizContainer>
+                {id.includes('___') && <GithubCorner projectUrl={`https://github.com/${id.split('___')[1]}/${id.split('___')[0]}`}/>}
+            </MainDiv>
+        </ThemeProvider>
     )
 }
 

@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import {motion} from 'framer-motion'
 
-export const FooterWrapper = styled.footer`
+export const FooterWrapper = styled(motion.footer)`
     background-color: #00000080;
     padding: 20px;
     display: flex;
