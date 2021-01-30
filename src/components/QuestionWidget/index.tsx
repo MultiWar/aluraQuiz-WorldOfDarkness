@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { useEffect, useState } from "react"
+import BackLinkArrow from "../BackLink"
 import Button from "../Button"
 import { QuestionAlternative, Widget, WidgetContent, WidgetHeader } from "../Card"
 
@@ -10,10 +11,10 @@ interface QuestionWidgetProps {
         description: string,
         answer: number,
         alternatives: string[],
-    },
-    questionIndex: number,
-    numberOfQuestions: number,
-    handleSubmit: (isCorrect: Boolean) => void,
+    } | undefined,
+    questionIndex: number | undefined,
+    numberOfQuestions: number | undefined,
+    handleSubmit: (isCorrect: Boolean) => void | undefined,
 }
 
 type PossibleClasses = '' | 'CORRECT' | 'NOTSELECTED' | 'WRONG'
@@ -24,13 +25,13 @@ const QuestionWidget = ({questionIndex, numberOfQuestions, question, handleSubmi
     const [isFormSubmitted, setIsFormSubmitted] = useState(false)
     const [dataStatus, setDataStatus] = useState<Record<number, string>>()
     
-    const indexes = [...question.alternatives.keys()]
+    const indexes = [...question!.alternatives.keys()]
 
     useEffect(() => {
         let isCleanup = false
         if(!isCleanup) {
             const newDataStatus: Record<number, string> = {}
-            indexes.forEach(index => {
+            indexes!.forEach(index => {
                 newDataStatus[index] = resolveClassName(index)
             })
             setDataStatus(newDataStatus)
@@ -45,10 +46,10 @@ const QuestionWidget = ({questionIndex, numberOfQuestions, question, handleSubmi
         if(!isFormSubmitted) {
             return ''
         }
-        if(index !== selectedAlternative && index !== question.answer) {
+        if(index !== selectedAlternative && index !== question!.answer) {
             return 'NOTSELECTED'
         }
-        if(index === question.answer) {
+        if(index === question!.answer) {
             return 'CORRECT'
         }
         else {
@@ -65,33 +66,36 @@ const QuestionWidget = ({questionIndex, numberOfQuestions, question, handleSubmi
     console.log('classes: ', dataStatus)
     console.log('selected alternative: ', selectedAlternative)
 
+    
+
     return (
         <Widget>
             <WidgetHeader>
-                <h3>Pergunta {questionIndex + 1} de {numberOfQuestions}</h3>
+                <BackLinkArrow href='/' />
+                <h3>Pergunta {questionIndex as number + 1} de {numberOfQuestions}</h3>
             </WidgetHeader>
             <Image 
-                src={question.image}
+                src={question!.image}
                 alt='Imagem ilustrativa da questão'
                 layout='responsive'
                 width={250}
                 height={100}
-                objectFit='cover'
+                objectFit='contain'
             />
             <WidgetContent>
-                <h2>{question.title}</h2>
-                <p>{question.description}</p>
+                <h2>{question!.title}</h2>
+                <p>{question!.description}</p>
                 <form
                     onSubmit={(e) => {
                         e.preventDefault()
                         setIsFormSubmitted(true)
                         setTimeout(() => {
                             clearStates()
-                            handleSubmit(selectedAlternative === question.answer)
+                            handleSubmit(selectedAlternative === question!.answer)
                         }, 1500)
                     }}
                 >
-                    {question.alternatives.map((alternative, index) => {
+                    {question!.alternatives.map((alternative, index) => {
                         const alternativeId = `alternative__${index}`
                         return (
                             <QuestionAlternative key={alternativeId} as='label' htmlFor={alternativeId} data-isSelected={selectedAlternative === index} data-status={dataStatus !== undefined ? dataStatus[index] : ''}>

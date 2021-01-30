@@ -10,6 +10,7 @@ import { useState, createRef } from "react"
 import {useRouter} from 'next/router'
 import Input from "src/components/Input"
 import Button from "src/components/Button"
+import Link from "next/link"
 
 export default function Home() {
   const [isNameEmpty, setIsNameEmpty] = useState(true)
@@ -21,7 +22,7 @@ export default function Home() {
     if(!newUrl.includes('.')) {
       return `${newUrl}`
     }
-    return `${newUrl.split('.')[1]}/${newUrl.split('.')[0]}`
+    return `${newUrl.split('.')[0]}___${newUrl.split('.')[1]}`
   }
 
   return (
@@ -33,7 +34,9 @@ export default function Home() {
         <QuizLogo className='teste'/>
         <h1>Alura Quiz</h1>
         <Widget>
-          <WidgetHeader><h1>{db.title}</h1></WidgetHeader>
+          <WidgetHeader>
+            <h1>{db.title}</h1>
+          </WidgetHeader>
           <WidgetContent>
             <form onSubmit={(e) => {
               e.preventDefault()
@@ -53,7 +56,11 @@ export default function Home() {
             <ul>{db.external.map((quizExterno, index) => {
               return (
                 <li key={index}>
-                  <QuestionAlternative href={`/quiz/${formatExternalLink(quizExterno)}`}>{formatExternalLink(quizExterno)}</QuestionAlternative>
+                  <Link href={`/quiz/${formatExternalLink(quizExterno)}`}>
+                    <QuestionAlternative>
+                      {formatExternalLink(quizExterno)}
+                    </QuestionAlternative>
+                  </Link>
                 </li>
               )
             })}</ul>

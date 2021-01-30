@@ -4,32 +4,129 @@
     "description": "Veja o quanto você sabe sobre World of Darkness, o clássico mundo de RPG a que pertencem \"Vampire: the Masquerade\" e \"Werewolf: the Apocalypse\".",
     "questions": [
       {
-        "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
-        "title": "Como fazer um seletor por id via CSS?",
-        "description": "Essa é pra aquecer",
+        "image": "https://media.moddb.com/images/mods/1/34/33878/Nosferatu_face.jpg",
+        "title": "Como são chamados os vampiros em Vampire: the Masquerade?",
+        "description": "Essa é fácil, mas pode te enganar se não estiver prestando atenção",
         "answer": 2,
         "alternatives": [
-          ".elemento",
-          "*elemento",
-          "#elemento",
-          "%elemento"
+          "morcegos",
+          "vampiros",
+          "cainitas",
+          "presas afiadas"
         ]
       },
       {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
-        "title": "Como fazer um background gradiente com css?",
-        "description": "Faz tempo em haha",
+        "image": "https://static.wikia.nocookie.net/whitewolf/images/3/3c/SymbolWoD5e.png/revision/latest/scale-to-width-down/340?cb=20180729032522",
+        "title": "Qual destes jogos *NÃO* pertence ao World of Darkness?",
+        "description": "Apesar de um deles não pertencer ao World of Darknes, todos são da White Wolf, mas em branchs diferentes",
+        "answer": 1,
+        "alternatives": [
+           "Vampire: the Masquerade",
+           "Werewolf: the Forsaken",
+           "Mage: the Ascension",
+           "Hunter: the Reckoning"
+        ]
+      },
+      {
+        "image": "https://static.wikia.nocookie.net/whitewolf/images/7/7f/Garras_Vermelhas_%281%29.jpg/revision/latest/top-crop/width/220/height/220?cb=20181227172909",
+        "title": "Como é chamada a raça dos lobisomens em Werewolf: the Apocalypse?",
+        "description": "Ainda estamos nas perguntas simples, então aproveite",
+        "answer": 3,
+        "alternatives": [
+           "lupinos",
+           "cainitas",
+           "lobisomens",
+           "garou"
+        ]
+      },
+      {
+        "image": "https://i.pinimg.com/originals/11/28/75/112875514daf2cc515a33db3a7e94b9f.jpg",
+        "title": "Qual destes *NÃO* é um clã de Vampire: the Masquerade terceira edição?",
+        "description": "Essa pode ser mais complicada, caso não jogue há algum tempo",
         "answer": 0,
         "alternatives": [
-           "background: linear-gradient(#e66465, #9198e5);",
-           "background: gradient(#e66465, #9198e5);"
+           "Cappadocian",
+           "Tremere",
+           "Tzimisce",
+           "Brujah"
+        ]
+      },
+      {
+        "image": "https://cdna.artstation.com/p/assets/images/images/010/423/960/large/andreja-zivic-brujah-finished-front.jpg?1524355435",
+        "title": "Qual destas disciplinas *É* uma disciplina do clã Brujah?",
+        "description": "Cuidado, as aparências podem te enganar",
+        "answer": 2,
+        "alternatives": [
+           "Fortitude",
+           "Quietus",
+           "Presença",
+           "Tenebrosidade"
+        ]
+      },
+      {
+        "image": "https://geekandsundry.com/wp-content/uploads/2018/10/Vampire-Thinblood-Featured.jpg",
+        "title": "A partir de qual geração um vampiro é considerado 'sangue fraco'?",
+        "description": "Vampiros de sangue fraco possuem bem menos poder comparados a vampiros apenas uma geração abaixo, por terem o sangue fraco. Porém, são menos afetados pelas maldições vampíricas",
+        "answer": 2,
+        "alternatives": [
+           "10ª",
+           "17ª",
+           "14ª",
+           "9ª"
+        ]
+      },
+      {
+        "image": "https://i.stack.imgur.com/08rRz.jpg",
+        "title": "A Week of Nightmares (Semana dos Pesadelos) foi um evento causado pelo despertar do Antediluviano dos... ",
+        "description": "Esta semana causou muitos problemas, e o fim deste evento catastrófico resultou no desaparecimento da cidade de Bangladesh e na quase extinção do clã em questão.",
+        "answer": 3,
+        "alternatives": [
+           "Tzimisce",
+           "Ventrue",
+           "Lasombra",
+           "Ravnos"
+        ]
+      },
+      {
+        "image": "https://static.wikia.nocookie.net/whitewolf/images/0/03/Fomori_01AB.jpg/revision/latest/top-crop/width/300/height/300?cb=20180613054608",
+        "title": "Em Werewolf: the Apocalypse, é entendido que existam 3 seres extremamente poderosos e que sejam a manifestação de aspectos do mundo. Eles são Wyld, Wyrm e...",
+        "description": "Esta pergunta se refere a uma das principais coisas da lore do jogo.",
+        "answer": 0,
+        "alternatives": [
+           "Weaver",
+           "Wyvern",
+           "Willy",
+           "Wonka"
+        ]
+      },
+      {
+        "image": "https://cdn.ome.lt/AoNbLMkPO2jSqLnVWRfZyibkEKw=/1200x630/smart/extras/conteudos/vampire-the-masquerade-bloodlines-2-malkavian.jpg",
+        "title": "Destas, qual *NÃO* é uma maldição que os cainitas sofrem em Vampire: the Masquerade?",
+        "description": "Apesar do que a cultura popular diz, os vampiros não são afetados por uma destas coisas no World of Darknes...",
+        "answer": 2,
+        "alternatives": [
+           "Luz do Sol",
+           "Perda de humanidade ao longo do tempo",
+           "Água corrente"
+        ]
+      },
+      {
+        "image": "https://static.wikia.nocookie.net/whitewolf/images/3/30/Werewolf5forms.jpg/revision/latest/scale-to-width-down/899?cb=20130616165151",
+        "title": "O ser que criou os garou em Werewolf: the Apocalypse é... ",
+        "description": "Este ser deu vida a muitos outros seres, mas não é a única que faz isso",
+        "answer": 1,
+        "alternatives": [
+           "Weaver",
+           "Gaia",
+           "Wyld",
+           "Wyrm"
         ]
       }
     ],
     "external": [
       "https://quizz-attack-on-titan.vercel.app/",
       "https://aluraquiz-base-eta-eight.vercel.app/",
-      "https://ai-quiz.idcesares.vercel.app/"
+      "https://aluraquiz-arcade.wesdrasalves.vercel.app/"
     ],
     "theme": {
       "colors": {
