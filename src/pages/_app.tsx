@@ -44,6 +44,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" />
         <link rel='stylesheet' type='text/css' href='/nprogress.css' />
         <meta charSet='UTF-8' />
+        <meta name='og:description' content='Este quiz foi feito para testar seus conhecimentos do clássico mundo de RPG "World of Darkness", a qual pertence "Vampire: the Masquerade" e outros.' />
+        <meta name='og:image' content='https://static.wikia.nocookie.net/whitewolf/images/3/3c/SymbolWoD5e.png/revision/latest/scale-to-width-down/340?cb=20180729032522' />
+        <meta name='og:url' content='https://aluraquiz-world-of-darkness.multiwar.vercel.app/' />
       </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
