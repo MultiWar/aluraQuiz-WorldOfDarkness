@@ -56,9 +56,7 @@ export const WidgetContent = styled.div`
     }
 `
 
-export const QuestionAlternative = styled.a.attrs(props => ({
-    className: props.className
-}))`
+export const QuestionAlternative = styled.a`
     outline: 0;
     text-decoration: none;
     color: ${({ theme }) => theme.colors.contrastText};
@@ -70,15 +68,21 @@ export const QuestionAlternative = styled.a.attrs(props => ({
     transition: .3s;
     display: block;
 
+    &[data-isSelected=true] {
+        opacity: .5;
+    }
+
     &[data-status="NOTSELECTED"] {
         opacity: .5;
     }
 
     &[data-status="WRONG"] {
+        opacity: 1;
         background-color: ${({theme}) => theme.colors.wrong};
     }
 
     &[data-status="CORRECT"] {
+        opacity: 1;
         background-color: ${({theme}) => theme.colors.success};
     }
 

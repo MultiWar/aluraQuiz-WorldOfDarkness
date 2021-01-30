@@ -94,7 +94,7 @@ const QuestionWidget = ({questionIndex, numberOfQuestions, question, handleSubmi
                     {question.alternatives.map((alternative, index) => {
                         const alternativeId = `alternative__${index}`
                         return (
-                            <QuestionAlternative key={alternativeId} as='label' htmlFor={alternativeId} data-status={dataStatus !== undefined ? dataStatus[index] : ''}>
+                            <QuestionAlternative key={alternativeId} as='label' htmlFor={alternativeId} data-isSelected={selectedAlternative === index} data-status={dataStatus !== undefined ? dataStatus[index] : ''}>
                                 <input id={alternativeId} name={questionId} type='radio' value={index} onChange={() => setSelectedAlternative(index)} />
                                 {alternative}
                             </QuestionAlternative>

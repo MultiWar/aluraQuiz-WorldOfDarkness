@@ -27,7 +27,9 @@
       }
     ],
     "external": [
-      ""
+      "https://quizz-attack-on-titan.vercel.app/",
+      "https://aluraquiz-base-eta-eight.vercel.app/",
+      "https://ai-quiz.idcesares.vercel.app/"
     ],
     "theme": {
       "colors": {

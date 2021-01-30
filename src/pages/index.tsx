@@ -5,7 +5,7 @@ import Footer from "../components/Footer"
 import GithubCorner from "../components/GithubCorner"
 import QuizLogo from "../components/QuizLogo"
 import Head from 'next/head'
-import { Widget, WidgetContent, WidgetHeader } from "src/components/Card"
+import { QuestionAlternative, Widget, WidgetContent, WidgetHeader } from "src/components/Card"
 import { useState, createRef } from "react"
 import {useRouter} from 'next/router'
 import Input from "src/components/Input"
@@ -15,6 +15,14 @@ export default function Home() {
   const [isNameEmpty, setIsNameEmpty] = useState(true)
   const router = useRouter()
   const inputRef = createRef<HTMLInputElement>()
+
+  function formatExternalLink(url: string): string {
+    const newUrl = url.replace('https://', '').replace('.vercel.app/', '')
+    if(!newUrl.includes('.')) {
+      return `${newUrl}`
+    }
+    return `${newUrl.split('.')[1]}/${newUrl.split('.')[0]}`
+  }
 
   return (
     <MainDiv bgImage={db.bg}>
@@ -37,11 +45,20 @@ export default function Home() {
             </form>
           </WidgetContent>
         </Widget>
-        {/* <Widget>
+        <Widget>
           <WidgetHeader>
-
+            <h2>Quizes da Galera</h2>
           </WidgetHeader>
-        </Widget> */}
+          <WidgetContent>
+            <ul>{db.external.map((quizExterno, index) => {
+              return (
+                <li key={index}>
+                  <QuestionAlternative href={`/quiz/${formatExternalLink(quizExterno)}`}>{formatExternalLink(quizExterno)}</QuestionAlternative>
+                </li>
+              )
+            })}</ul>
+          </WidgetContent>
+        </Widget>
         <Footer />
       </QuizContainer>
       <GithubCorner projectUrl={'https://github.com/MultiWar/aluraQuiz-WorldOfDarkness'}/>
